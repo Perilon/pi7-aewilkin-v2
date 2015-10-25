@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>false</primitive>  
+  <delegateAnalysisEngineSpecifiers>
+    <delegateAnalysisEngine key="TokenAnnotatorDescriptor">
+      <import location="/home/perilon/git/pi7-aewilkin/pi7-aewilkin/src/main/resources/descriptors/TokenAnnotatorDescriptor.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="NgramAnnotatorDescriptor">
+      <import location="/home/perilon/git/pi7-aewilkin/pi7-aewilkin/src/main/resources/descriptors/NgramAnnotatorDescriptor.xml"/>
+    </delegateAnalysisEngine>
+  <delegateAnalysisEngine key="questionAnnotatorDescriptor">
+      <import location="/home/perilon/git/pi7-aewilkin/pi7-aewilkin/src/main/resources/descriptors/questionAnnotatorDescriptor.xml"/>
+    
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="passageAnnotatorDescriptor">
+      <import location="/home/perilon/git/pi7-aewilkin/pi7-aewilkin/src/main/resources/descriptors/passageAnnotatorDescriptor.xml"/>
+    
+    </delegateAnalysisEngine>
+  </delegateAnalysisEngineSpecifiers>
+  <analysisEngineMetaData>
+    <name>aaeDescriptor</name>
+    <description>This is a template (empty) descriptor for your Aggerate Analysis Engine.  You will need to specify your type system and capabilities, in addition to your individual analysis engines.</description>
+    <version>1.0</version>
+    <vendor/>
+    <configurationParameters searchStrategy="language_fallback"/>
+    <configurationParameterSettings/>
+    <flowConstraints>
+      <fixedFlow>
+        <node>questionAnnotatorDescriptor</node>
+        <node>passageAnnotatorDescriptor</node>
+      <node>TokenAnnotatorDescriptor</node>
+        <node>NgramAnnotatorDescriptor</node>
+      </fixedFlow>
+    </flowConstraints>
+    <typePriorities/>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs/>
+        <outputs>
+          <type>type.Question</type>
+        <feature>type.Question:measurement</feature>
+          <feature>type.Question:passages</feature>
+          <feature>type.Question:sentence</feature>
+          <feature>type.Question:id</feature>
+          <feature>type.Question:score</feature>
+          <feature>type.Question:componentId</feature>
+          <feature>type.Question:end</feature>
+          <feature>type.Question:begin</feature>
+        <type allAnnotatorFeatures="true">type.Token</type>
+          <type allAnnotatorFeatures="true">type.Passage</type>
+          <type allAnnotatorFeatures="true">type.Ngram</type>
+          <type allAnnotatorFeatures="true">type.Measurement</type>
+          <type allAnnotatorFeatures="true">type.InputDocument</type>
+          <type allAnnotatorFeatures="true">type.ComponentAnnotation</type>
+        </outputs>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+  <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration/>
+</analysisEngineDescription>
